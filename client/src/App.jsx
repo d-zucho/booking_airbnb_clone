@@ -1,11 +1,18 @@
 import './App.css'
-import Header from './components/Header'
+import { Routes, Route } from 'react-router-dom'
+import IndexPage from './pages/IndexPage'
+import LoginPage from './pages/LoginPage'
+import Layout from './Layout'
 
 function App() {
   return (
-    <>
-      <Header />
-    </>
+    <Layout>
+      <Routes>
+        <Route index element={<IndexPage />} />
+        <Route path='/login' element={<LoginPage />} />
+        {/* <Header /> */}
+      </Routes>
+    </Layout>
   )
 }
 

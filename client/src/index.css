@@ -7,3 +7,20 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+label {
+  margin-bottom: -10px;
+  color: #f5385d;
+  font-weight: 500;
+}
+
+input[type='email'],
+input[type='password'] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 1.5rem;
+  outline: none;
+}
