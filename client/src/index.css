@@ -7,20 +7,32 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  min-width: 400px;
+}
+
+#login-form {
+  @apply min-w-[350px] mx-auto;
+}
 
 label {
   margin-bottom: -10px;
   color: #f5385d;
   font-weight: 500;
 }
-
+input[type='text'],
 input[type='email'],
 input[type='password'] {
-  width: 100%;
+  /* width: 100%;
   padding: 10px;
   margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;*/
   outline: none;
+  @apply w-full border mb-6 my-4 py-2 px-3 rounded-lg;
+}
+
+button.primary {
+  @apply bg-primary rounded-2xl py-2 w-full text-white;
 }

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const Header = () => {
   return (
     <>
-      <header className='flex items-center justify-between'>
+      <header className='flex items-center justify-between z-50'>
         <a
           href='/'
           className='flex items-center gap-1 font-bold text-xl text-primary'
