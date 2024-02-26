@@ -1,8 +1,12 @@
 const express = require('express')
 const cors = require('cors')
+const { default: mongoose } = require('mongoose')
 const app = express()
 
 app.use(express.json())
+
+// username: dannyNico
+// password:
 
 app.use(
   cors({
@@ -10,6 +14,8 @@ app.use(
     credentials: true,
   })
 )
+
+mongoose.connect(process.env.MONGO_URL)
 
 app.post('/register', (req, res) => {
   const { name, email, password } = req.body
