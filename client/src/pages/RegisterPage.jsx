@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
+import axios from 'axios'
 
 const RegisterPage = () => {
   // ** State for form inputs
@@ -18,7 +19,15 @@ const RegisterPage = () => {
     console.log({ data })
   }
 
-  // ** HANDLE FORM SUBMIT
+  // ** Register User
+  const registerUser = async () => {
+    axios.post('/register', {
+      name,
+      email,
+      password,
+    })
+  }
+  // registerUser()
 
   return (
     <section id='register-section'>
@@ -27,7 +36,10 @@ const RegisterPage = () => {
       <form
         id='login-form'
         className=' flex flex-col mx-auto max-w-md'
-        onSubmit={handleSubmit((data) => console.log(data))}
+        onSubmit={(e) => {
+          registerUser()
+          e.preventDefault()
+        }}
       >
         <label htmlFor='name' className='text-xs'>
           Name
@@ -44,9 +56,6 @@ const RegisterPage = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        {errors.name && (
-          <p className='text-xs font-primary'>{errors.name.message}</p>
-        )}
 
         <label htmlFor='email' className='text-xs'>
           Email
@@ -57,15 +66,9 @@ const RegisterPage = () => {
           id='email'
           placeholder='yourEmail@example.com'
           value={email}
-          {...register('email', {
-            required: 'This is required',
-            minLength: { value: 8, message: 'Min length is 5' },
-          })}
           onChange={(e) => setEmail(e.target.value)}
         />
-        {errors.email && (
-          <p className='text-xs font-primary'>{errors.email.message}</p>
-        )}
+
         <label htmlFor='password' className='text-xs'>
           Password
         </label>
@@ -76,15 +79,9 @@ const RegisterPage = () => {
           placeholder='Enter password'
           pattern='[A-Za-z0-9]{8,}'
           value={password}
-          {...register('password', {
-            required: 'This is required',
-            minLength: { value: 5, message: 'Min length is 5' },
-          })}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {errors.password && (
-          <p className='text-xs font-primary'>{errors.password.message}</p>
-        )}
+
         <button type='submit' className='primary'>
           Login
         </button>
