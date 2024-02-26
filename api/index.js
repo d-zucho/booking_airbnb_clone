@@ -1,21 +1,20 @@
 const express = require('express')
 const cors = require('cors')
 const { default: mongoose } = require('mongoose')
+
+require('dotenv').config()
 const app = express()
 
 app.use(express.json())
-
-// username: dannyNico
-// password:
-
 app.use(
   cors({
     origin: 'http://localhost:5173',
     credentials: true,
   })
 )
+console.log(process.env.MONGO_URI)
 
-mongoose.connect(process.env.MONGO_URL)
+mongoose.connect(process.env.MONGO_URI)
 
 app.post('/register', (req, res) => {
   const { name, email, password } = req.body
