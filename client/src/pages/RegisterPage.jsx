@@ -21,11 +21,16 @@ const RegisterPage = () => {
 
   // ** Register User
   const registerUser = async () => {
-    axios.post('/register', {
-      name,
-      email,
-      password,
-    })
+    try {
+      await axios.post('/register', {
+        name,
+        email,
+        password,
+      })
+      alert('User registered successfully!')
+    } catch (error) {
+      alert('Registration failed! Please try again later.')
+    }
   }
   // registerUser()
 

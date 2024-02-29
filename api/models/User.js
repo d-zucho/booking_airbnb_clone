@@ -28,3 +28,4 @@ const UserModel = mongoose.model('User', UserSchema)
 // Thus, for the example above, the model User is for the users collection in the database.
 
 module.exports = UserModel
+// The model is exported so that it can be used in other files
